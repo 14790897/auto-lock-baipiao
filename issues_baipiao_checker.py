@@ -117,6 +117,19 @@ def unlock_issue(repo, issue_number):
     print("issue: {} unlocked".format(issue_number))
 
 
+def reopen_issue(repo, issue_number):
+    url = "https://api.github.com/repos/{}/issues/{}".format(repo, issue_number)
+    data = {
+        "state": "open",
+        "labels": [],
+    }
+    resp = requests.patch(url, headers=headers, json=data)
+    if resp.status_code != 200:
+        raise Exception("Error reopen issue: " + resp.text)
+
+    print("issue: {} reopened".format(issue_number))
+
+
 if '__main__' == __name__:
     stargazers = get_stargazers(github_repo)
 
@@ -127,6 +140,7 @@ if '__main__' == __name__:
 
         login = issue['user']['login']
         if login not in stargazers:
+            # 这里传入的既有锁定的也有打开的issue，我们只需要对未锁定的进行操作
             if not issue["locked"]:
                 print(
                     "issue: {}, login: {} not in stargazers".format(
@@ -141,7 +155,17 @@ if '__main__' == __name__:
                 )
                 lock_issue(github_repo, issue["number"])
         else:
-            print("issue: {}, login: {} in stargazers".format(issue["number"], login))
-            unlock_issue(github_repo, issue["number"])
+            # 如果说用户是点过star的而且他的issue被锁定了，就可以重新打开
+            if issue["locked"]:
+                print(
+                    "issue: {}, login: {} in stargazers".format(issue["number"], login)
+                )
+                unlock_issue(github_repo, issue["number"])
+                leave_comment(
+                    github_repo,
+                    issue["number"],
+                    "thank you for giving me a star, I will consider it",
+                )
+                reopen_issue(github_repo, issue["number"])
 
     print('done')
