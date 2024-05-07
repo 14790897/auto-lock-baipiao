@@ -33,8 +33,8 @@
 1. 创建 `.env` 文件并设置以下环境变量：
 
    ```
-   GITHUB_REPO=your_username/your_repo
-   GITHUB_TOKEN=your_github_access_token
+   GH_REPO=your_username/your_repo
+   GH_TOKEN=your_github_access_token
    ISSUE_LABELS="haven't given me a star"
    ```
 
