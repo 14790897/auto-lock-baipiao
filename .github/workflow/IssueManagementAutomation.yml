@@ -2,8 +2,9 @@ name: Issue Management Automation
 
 on:
   schedule:
-    - cron: "0 18 * * *" # At 02:00 beijing time zone
-
+    - cron: "*/10 * * * *" 
+  workflow_dispatch:
+  
 jobs:
   manage_issues:
     runs-on: ubuntu-latest
