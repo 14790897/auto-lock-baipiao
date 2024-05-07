@@ -38,8 +38,8 @@
    ISSUE_LABELS=["haven't given me a star"]
    ```
 
-   - `GITHUB_REPO`: 设置为你的 GitHub 用户名和仓库名。
-   - `GITHUB_TOKEN`: 设置为你的 GitHub 访问令牌。确保令牌有足够的权限管理 issues。
+   - `GH_REPO`: 设置为你的 GitHub 用户名和仓库名。
+   - `GH_TOKEN`: 设置为你的 GitHub 访问令牌。确保令牌有足够的权限管理 issues。
    - `ISSUE_LABELS`: 在自动创建或更新 issues 时应用的标签。
 
 ## 运行脚本
