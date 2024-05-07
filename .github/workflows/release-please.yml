@@ -10,7 +10,7 @@ jobs:
       - uses: GoogleCloudPlatform/release-please-action@v2
         with:
           token: ${{ secrets.GH_TOKEN }}
-          release-type: node
+          release-type: python
           package-name: auto-lock-baipiao
 permissions:
   contents: write
