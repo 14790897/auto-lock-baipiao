@@ -9,10 +9,6 @@
 - **自动解锁**：对于已锁定的issue，如果用户后续为仓库点了星，则自动解锁。
 - **自动评论**：在锁定issue时自动添加一条评论，提示用户为仓库点星后考虑解锁。
 
-## 使用前提
-
-- Python 3.x
-- 安装依赖：`python-dotenv` 与 `requests`
 
 ## 安装
 
@@ -41,7 +37,7 @@
     ```
     GITHUB_REPO=your_username/your_repo
     GITHUB_TOKEN=your_github_access_token
-    ISSUE_LABELS=label1,label2
+    ISSUE_LABELS=["haven't given me a star"]
     ```
 
     - `GITHUB_REPO`: 设置为你的GitHub用户名和仓库名。

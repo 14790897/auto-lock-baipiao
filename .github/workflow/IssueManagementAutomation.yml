@@ -1,0 +1,28 @@
+name: Issue Management Automation
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # At 02:00 beijing time zone
+
+jobs:
+  manage_issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          pip install requests python-dotenv
+
+      - name: Run script
+        run: python path/to/your_script.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GITHUB_REPOSITORY }}
+          ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}

@@ -5,7 +5,8 @@ import os
 load_dotenv()
 import requests
 
-issue_labels = os.getenv("ISSUE_LABELS")
+issue_labels = os.getenv("ISSUE_LABELS", "haven't given me a star")
+issue_labels = issue_labels.split(",")  # 将字符串转换为列表
 github_repo = os.getenv("GITHUB_REPO")
 github_token = os.getenv("GITHUB_TOKEN")
 
@@ -47,11 +48,11 @@ def get_issues(repo):
     _issues = []
     while True:
         queries = {
-            'state': 'open',
-            'sort': 'created',
-            'direction': 'desc',
-            'per_page': 100,
-            'page': page,
+            "state": "all",
+            "sort": "created",
+            "direction": "desc",
+            "per_page": 100,
+            "page": page,
         }
         url = 'https://api.github.com/repos/{}/issues?'.format(repo)
 
@@ -62,8 +63,10 @@ def get_issues(repo):
         data = resp.json()
         if not data:
             break
-
-        _issues += data
+        for issue in data:
+            if issue["locked"] or issue["state"] == "open":
+                _issues.append(issue)
+        # _issues += data
         page += 1
 
     print('list issues done, total: ' + str(len(_issues)))
@@ -124,15 +127,21 @@ if '__main__' == __name__:
 
         login = issue['user']['login']
         if login not in stargazers:
-            print('issue: {}, login: {} not in stargazers'.format(issue['number'], login))
-            close_issue(github_repo, issue['number'])
-            leave_comment(
-                github_repo,
-                issue["number"],
-                "please give me a star, then I will consider it.",
-            )
-            lock_issue(github_repo, issue['number'])
+            if not issue["locked"]:
+                print(
+                    "issue: {}, login: {} not in stargazers".format(
+                        issue["number"], login
+                    )
+                )
+                close_issue(github_repo, issue["number"])
+                leave_comment(
+                    github_repo,
+                    issue["number"],
+                    "please give me a star, then I will consider it.",
+                )
+                lock_issue(github_repo, issue["number"])
         else:
+            print("issue: {}, login: {} in stargazers".format(issue["number"], login))
             unlock_issue(github_repo, issue["number"])
 
     print('done')
