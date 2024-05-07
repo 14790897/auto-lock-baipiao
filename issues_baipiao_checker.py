@@ -1,8 +1,14 @@
+from dotenv import load_dotenv
+import os
+
+# 加载 .env 文件
+load_dotenv()
 import requests
 
-issue_labels = ["no respect(haven't given me star)"] 
-github_repo = '<owner>/<repo>'
-github_token = '<github token>'
+issue_labels = os.getenv("ISSUE_LABELS")
+github_repo = os.getenv("GITHUB_REPO")
+github_token = os.getenv("GITHUB_TOKEN")
+
 headers = {
     'Authorization': 'Bearer ' + github_token,
     'Accept': 'application/vnd.github+json',
@@ -99,6 +105,15 @@ def lock_issue(repo, issue_number):
     print('issue: {} locked'.format(issue_number))
 
 
+def unlock_issue(repo, issue_number):
+    url = "https://api.github.com/repos/{}/issues/{}/lock".format(repo, issue_number)
+    resp = requests.delete(url, headers=headers)
+    if resp.status_code != 204:
+        raise Exception("Error unlock issue: " + resp.text)
+
+    print("issue: {} unlocked".format(issue_number))
+
+
 if '__main__' == __name__:
     stargazers = get_stargazers(github_repo)
 
@@ -106,11 +121,18 @@ if '__main__' == __name__:
     for issue in issues:
         if 'pull_request' in issue:
             continue
-            
+
         login = issue['user']['login']
         if login not in stargazers:
             print('issue: {}, login: {} not in stargazers'.format(issue['number'], login))
             close_issue(github_repo, issue['number'])
+            leave_comment(
+                github_repo,
+                issue["number"],
+                "please give me a star, then I will consider it.",
+            )
             lock_issue(github_repo, issue['number'])
+        else:
+            unlock_issue(github_repo, issue["number"])
 
     print('done')
