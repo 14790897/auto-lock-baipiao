@@ -18,11 +18,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests python-dotenv
+          pip install -r requirements.txt
 
       - name: Run script
-        run: python path/to/your_script.py
+        run: python issues_baipiao_checker.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPO: ${{ secrets.GITHUB_REPOSITORY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ secrets.GH_REPO }}
           ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}

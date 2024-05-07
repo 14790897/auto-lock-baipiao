@@ -7,8 +7,8 @@ import requests
 
 issue_labels = os.getenv("ISSUE_LABELS", "haven't given me a star")
 issue_labels = issue_labels.split(",")  # 将字符串转换为列表
-github_repo = os.getenv("GITHUB_REPO")
-github_token = os.getenv("GITHUB_TOKEN")
+github_repo = os.getenv("GH_REPO")
+github_token = os.getenv("GH_TOKEN")
 
 headers = {
     'Authorization': 'Bearer ' + github_token,
