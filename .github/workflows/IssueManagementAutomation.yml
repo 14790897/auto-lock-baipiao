@@ -1,15 +1,15 @@
 name: Issue Management Automation
 
 on:
-  # schedule:
-  #   - cron: "*/30 * * * *"   #"0 18 * * *"  "0 */6 * * *"
+  schedule:
+    - cron: "0 18 * * *"   #"0 18 * * *"  "0 */6 * * *"
   workflow_dispatch:
   push:
     branches:
       - main
   issues:
     types: [opened]
-    
+
 jobs:
   manage_issues:
     runs-on: ubuntu-latest
