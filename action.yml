@@ -28,7 +28,7 @@ runs:
         pip install -r requirements.txt
 
     - name: Run script
-      run: python main.py
+      run: python issues_baipiao_checker.py
       env:
         GH_REPO: ${{ inputs.gh_repo }}
         GH_TOKEN: ${{ inputs.gh_token }}
