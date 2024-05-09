@@ -8,11 +8,12 @@
 - **自动解锁**：对于已锁定的 issue，如果用户后续为仓库点了星，则自动解锁，并添加一条评论，通知用户 issue 已解锁
   提示： 检测频率目前为10分钟一次
 
-## GitHub Action Marketplace已上架，可以直接使用
+## GitHub Action Marketplace已上架，可以直接使用(最方便，推荐)
 - [auto-lock-baipiao](https://github.com/marketplace/actions/auto-lock-baipiao)
 - 使用方法参考配置：[ActionTest.yml](.github/workflows/ActionTest.yml)
 
-## 安装
+## 手动执行一次
+### 安装
 
 1. 克隆此仓库到本地：
 
@@ -32,7 +33,7 @@
    pip install -r requirements.txt
    ```
 
-## 设置
+### 设置
 
 1. 创建 `.env` 文件并设置以下环境变量：
 
@@ -46,7 +47,7 @@
    - `GH_TOKEN`: 设置为你的 GitHub 访问令牌。确保令牌有足够的权限管理 issues。
    - `ISSUE_LABELS`: 在自动创建或更新 issues 时应用的标签。
 
-## 运行脚本
+### 运行脚本
 
 执行脚本：
 
