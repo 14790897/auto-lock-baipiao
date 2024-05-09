@@ -1,5 +1,14 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/14790897/auto-lock-baipiao/compare/v0.1.1...v0.1.2) (2024-05-09)
+
+
+### Bug Fixes
+
+* action ([0222cc5](https://www.github.com/14790897/auto-lock-baipiao/commit/0222cc55057962a02e3c4031461467d98928aa2b))
+* action ([f1fc3ed](https://www.github.com/14790897/auto-lock-baipiao/commit/f1fc3ed0a6a50eaf1da7de650b0b8f90c97c8907))
+* action ([3a37f03](https://www.github.com/14790897/auto-lock-baipiao/commit/3a37f039f40fd575d8962da2ba8b57bbd4ffc35a))
+
 ### [0.1.1](https://www.github.com/14790897/auto-lock-baipiao/compare/v0.1.0...v0.1.1) (2024-05-09)
 
 
