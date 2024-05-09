@@ -34,5 +34,5 @@ jobs:
         run: python issues_baipiao_checker.py
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ secrets.GH_REPO }}
+          GH_REPO: ${{ github.repository }}
           ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}

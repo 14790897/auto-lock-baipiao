@@ -52,11 +52,9 @@ python issues_baipiao_checker.py
 
 ## GitHub Actions 集成
 
-secrets 配置三个变量
+secrets 配置一个变量（其它变量GitHub自带）
 
 ```sh
-GH_TOKEN: ${{ secrets.GH_TOKEN }}
-GH_REPO: ${{ secrets.GH_REPO }}
 ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}
 ```
 
