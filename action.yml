@@ -26,6 +26,8 @@ runs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+      shell: bash
+
 
     - name: Run script
       run: python issues_baipiao_checker.py
@@ -33,3 +35,4 @@ runs:
         GH_REPO: ${{ inputs.gh_repo }}
         GH_TOKEN: ${{ inputs.gh_token }}
         ISSUE_LABELS: ${{ inputs.issue_labels }}
+      shell: bash
