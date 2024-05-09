@@ -1,4 +1,4 @@
-name: Issue Management Automation
+name: Issue Action Test
 
 on:
   schedule:
