@@ -8,6 +8,10 @@
 - **自动解锁**：对于已锁定的 issue，如果用户后续为仓库点了星，则自动解锁，并添加一条评论，通知用户 issue 已解锁
   提示： 检测频率目前为10分钟一次
 
+## GitHub Action Marketplace已上架，可以直接使用
+- [auto-lock-baipiao](https://github.com/marketplace/actions/auto-lock-baipiao)
+- 使用方法参考配置：[ActionTest.yml](.github/workflows/ActionTest.yml)
+
 ## 安装
 
 1. 克隆此仓库到本地：
@@ -50,13 +54,17 @@
 python issues_baipiao_checker.py
 ```
 
-## GitHub Actions 集成
+## GitHub Actions 手动集成（可以指定任意仓库）
 
-secrets 配置一个变量（其它变量GitHub自带）
+secrets 配置三个变量
 
 ```sh
+GH_TOKEN: ${{ secrets.GH_TOKEN }}
+GH_REPO: ${{ secrets.GH_REPO }}
 ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}
 ```
+使用方法参考配置：[IssueManagementAutomation.yml](IssueManagementAutomation.yml)
+
 
 ## 贡献
 
