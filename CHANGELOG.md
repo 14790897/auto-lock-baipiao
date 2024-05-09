@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.3](https://www.github.com/14790897/auto-lock-baipiao/compare/v0.1.2...v0.1.3) (2024-05-09)
+
+
+### Bug Fixes
+
+* action ([dc7099e](https://www.github.com/14790897/auto-lock-baipiao/commit/dc7099e55ca47e59a6d4c28259347aae2f1b7a56))
+
 ### [0.1.2](https://www.github.com/14790897/auto-lock-baipiao/compare/v0.1.1...v0.1.2) (2024-05-09)
 
 
