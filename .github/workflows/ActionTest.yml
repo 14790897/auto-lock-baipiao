@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Auto Lock Baipiao
-        uses: 14790897/auto-lock-baipiao@0.1.1
+        uses:  14790897/auto-lock-baipiao@v0.1.1
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
           gh_repo: ${{ secrets.GH_REPO }}
