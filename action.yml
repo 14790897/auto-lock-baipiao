@@ -37,3 +37,7 @@ runs:
         GH_TOKEN: ${{ inputs.gh_token }}
         ISSUE_LABELS: ${{ inputs.issue_labels }}
       shell: bash
+
+branding:
+  icon: "zap"
+  color: "red"
