@@ -17,7 +17,7 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        repository: ${{ inputs.gh_repo }}
+        repository: "14790897/auto-locker-baipiao"
         token: ${{ inputs.gh_token }}
     - name: Set up Python
       uses: actions/setup-python@v2
