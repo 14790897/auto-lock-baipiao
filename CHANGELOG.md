@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.5](https://www.github.com/14790897/auto-lock-baipiao/compare/v0.1.4...v0.1.5) (2024-08-08)
+
+
+### Bug Fixes
+
+* 检出仓库失败 ([0abb49c](https://www.github.com/14790897/auto-lock-baipiao/commit/0abb49c66b7d9c089bb2aa84dfeab345368f2e56))
+
 ### [0.1.4](https://www.github.com/14790897/auto-lock-baipiao/compare/v0.1.3...v0.1.4) (2024-08-08)
 
 
