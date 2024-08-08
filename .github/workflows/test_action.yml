@@ -1,8 +1,9 @@
+# 这个是我自己用于测试的，可以在当前仓库里开启issue来测试
 name: Issue Management Automation
 
 on:
-  schedule:
-    - cron: "0 18 * * *"   #"0 18 * * *"  "0 */6 * * *"
+  # schedule:
+  #   - cron: "0 18 * * *"   #"0 18 * * *"  "0 */6 * * *"
   workflow_dispatch:
   push:
     branches:
@@ -34,5 +35,5 @@ jobs:
         run: python issues_baipiao_checker.py
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
+          GH_REPO: ${{ github.repository }}  #因为是测试，这里就使用当前仓库了 2024.8.8
           ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}

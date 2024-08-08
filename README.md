@@ -6,30 +6,43 @@
 
 - **自动检测和锁定**：自动检测所有打开的 issues，如果 issue 提出者没有为仓库点星，则自动锁定该 issue，并添加一条评论，提示用户为仓库点星后考虑解锁
 - **自动解锁**：对于已锁定的 issue，如果用户后续为仓库点了星，则自动解锁，并添加一条评论，通知用户 issue 已解锁
-  提示： 检测频率目前为10分钟一次
+  提示： 检测频率请在 action 中的 schedule 中设置，建议每天检测一次
 
-## GitHub Action Marketplace已上架，可以直接使用(最方便，推荐)
-- [auto-lock-baipiao](https://github.com/marketplace/actions/auto-lock-baipiao)
-- 使用方法参考配置：[ActionTest.yml](.github/workflows/ActionTest.yml)
+## GitHub Action Marketplace 已上架，可以直接使用(最方便，推荐)
 
-## 手动执行一次
+action 市场地址：[auto-lock-baipiao](https://github.com/marketplace/actions/auto-lock-baipiao)
+
+### secrets 需要配置两个变量
+
+```sh
+GH_REPO: ${{ secrets.GH_REPO }} # 需要检测的仓库名
+ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }} # issue 标签
+```
+
+### 使用示例
+
+[.github/workflows/IssueManagementAutomation.yml](.github/workflows/IssueManagementAutomation.yml)
+直接复制到你的仓库的 `.github/workflows` 目录下，随后配置两个 secrets 即可
+
+## 手动执行(只执行一次)
+
 ### 安装
 
 1. 克隆此仓库到本地：
 
-   ```
+   ```sh
    git clone https://github.com/14790897/auto-lock-baipiao
    ```
 
 2. 进入项目目录：
 
-   ```
+   ```sh
    cd auto-lock-baipiao
    ```
 
 3. 安装依赖：
 
-   ```
+   ```sh
    pip install -r requirements.txt
    ```
 
@@ -37,7 +50,7 @@
 
 1. 创建 `.env` 文件并设置以下环境变量：
 
-   ```
+   ```sh
    GH_REPO=your_username/your_repo
    GH_TOKEN=your_github_access_token
    ISSUE_LABELS="haven't given me a star"
@@ -51,21 +64,9 @@
 
 执行脚本：
 
-```
+```sh
 python issues_baipiao_checker.py
 ```
-
-## GitHub Actions 手动集成（可以指定任意仓库）
-
-secrets 配置三个变量
-
-```sh
-GH_TOKEN: ${{ secrets.GH_TOKEN }}
-GH_REPO: ${{ secrets.GH_REPO }}
-ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}
-```
-使用方法参考配置：[IssueManagementAutomation.yml](IssueManagementAutomation.yml)
-
 
 ## 贡献
 
