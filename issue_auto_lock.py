@@ -10,7 +10,7 @@ issue_labels = issue_labels.split(",")  # 将字符串转换为列表
 issue_close_comment = os.getenv("ISSUE_CLOSE_COMMENT",
                                 "Thank you for opening this issue. I noticed that you haven not given me a star yet, so I will close this issue. Please give me a star first and wait for it to be unlocked. Thank you for your understanding.")
 issue_reopen_comment = os.getenv("ISSUE_REOPEN_COMMENT",
-                                 "Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support.)
+                                 "Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support.")
 white_list = os.getenv("WIHTE_LIST", "")
 white_list = white_list.split(",")  # 将字符串转换为列表
 github_repo = os.getenv("GH_REPO")
@@ -171,8 +171,17 @@ if '__main__' == __name__:
                 )
                 lock_issue(github_repo, issue["number"])
         else:
-            # 如果说用户是点过star的而且他的issue被锁定了，就可以重新打开
+            # 如果说用户是点过star的而且他的issue被锁定了且带有特定标签，就可以重新打开
             if issue["locked"]:
+                # 检查是否带有特定标签
+                has_label = False
+                for label in issue["labels"]:
+                    if label["name"] in issue_labels:
+                        has_label = True
+                        break
+                if not has_label:
+                    continue
+
                 print(
                     "issue: {}, login: {} in stargazers".format(issue["number"], login)
                 )
