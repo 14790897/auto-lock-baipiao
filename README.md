@@ -69,7 +69,7 @@ ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }} # issue 标签
 执行脚本：
 
 ```sh
-python issues_baipiao_checker.py
+python issue_auto_lock.py
 ```
 
 ## 贡献
