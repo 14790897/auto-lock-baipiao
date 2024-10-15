@@ -7,6 +7,8 @@ import requests
 
 issue_labels = os.getenv("ISSUE_LABELS", "haven't given me a star")
 issue_labels = issue_labels.split(",")  # 将字符串转换为列表
+issue_close_comment = os.getenv("ISSUE_CLOSE_COMMENT", "please give me a star, then I will consider it.")
+issue_reopen_comment = os.getenv("ISSUE_REOPEN_COMMENT", "thank you for giving me a star, I will consider it.")
 github_repo = os.getenv("GH_REPO")
 github_token = os.getenv("GH_TOKEN")
 
@@ -151,7 +153,7 @@ if '__main__' == __name__:
                 leave_comment(
                     github_repo,
                     issue["number"],
-                    "please give me a star, then I will consider it.",
+                    issue_close_comment,
                 )
                 lock_issue(github_repo, issue["number"])
         else:
@@ -164,7 +166,7 @@ if '__main__' == __name__:
                 leave_comment(
                     github_repo,
                     issue["number"],
-                    "thank you for giving me a star, I will consider it",
+                    issue_reopen_comment,
                 )
                 reopen_issue(github_repo, issue["number"])
 

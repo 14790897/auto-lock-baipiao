@@ -35,5 +35,5 @@ jobs:
         run: python issues_baipiao_checker.py
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}  #因为是测试，这里就使用当前仓库了 2024.8.8
+          GH_REPO: ${{ github.repository }} # 因为是测试，这里就使用当前仓库了 2024.8.8
           ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }}

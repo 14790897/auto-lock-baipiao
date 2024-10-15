@@ -54,11 +54,15 @@ ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }} # issue 标签
    GH_REPO=your_username/your_repo
    GH_TOKEN=your_github_access_token
    ISSUE_LABELS="haven't given me a star"
+   ISSUE_CLOSE_COMMENT="please give me a star, then I will consider it."
+   ISSUE_REOPEN_COMMENT="thank you for giving me a star, I will consider it."
    ```
 
    - `GH_REPO`: 设置为你的 GitHub 用户名和仓库名。
    - `GH_TOKEN`: 设置为你的 GitHub 访问令牌。确保令牌有足够的权限管理 issues。
    - `ISSUE_LABELS`: 在自动创建或更新 issues 时应用的标签。
+   - `ISSUE_CLOSE_COMMENT`: 当锁定 issue 时添加的评论。
+   - `ISSUE_REOPEN_COMMENT`: 当解锁 issue 时添加的评论。
 
 ### 运行脚本
 

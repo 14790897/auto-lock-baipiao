@@ -10,17 +10,25 @@ inputs:
   issue_labels:
     description: "Comma-separated list of labels to apply to the issue"
     required: true
-    default: "need-review"
+    default: "haven't given me a star"
+  issue_close_comment:
+    description: "Comment to post when closing the issue"
+    required: false
+    default: "please give me a star, then I will consider it."
+  issue_reopen_comment:
+    description: "Comment to post when reopening the issue"
+    required: false
+    default: "thank you for giving me a star, I will consider it."
 runs:
   using: "composite"
   steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: "14790897/auto-locker-baipiao"
         token: ${{ inputs.gh_token }}
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: "3.x"
     # - name: List files
@@ -31,15 +39,15 @@ runs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       shell: bash
-
     - name: Run script
       run: python issues_baipiao_checker.py
       env:
         GH_REPO: ${{ inputs.gh_repo }}
         GH_TOKEN: ${{ inputs.gh_token }}
         ISSUE_LABELS: ${{ inputs.issue_labels }}
+        ISSUE_CLOSE_COMMENT: ${{ inputs.issue_close_comment }}
+        ISSUE_REOPEN_COMMENT: ${{ inputs.issue_reopen_comment }}
       shell: bash
-
 branding:
   icon: "zap"
   color: "red"
