@@ -1,4 +1,4 @@
-# GitHub Issue Manager
+# Issue Auto Lock
 
 该 Python 脚本使用 GitHub API 自动管理一个 GitHub 仓库的 issues。它特别针对那些没有为仓库点星但提交了 issue 的用户，自动锁定这些用户的 issue，如果这些用户之后为仓库点星，则自动解锁。
 
@@ -10,7 +10,7 @@
 
 ## GitHub Action Marketplace 已上架，可以直接使用(最方便，推荐)
 
-action 市场地址：[auto-lock-baipiao](https://github.com/marketplace/actions/auto-lock-baipiao)
+action 市场地址：[issue-auto-lock](https://github.com/marketplace/actions/issue-auto-lock)
 
 ### secrets 需要配置两个变量
 
@@ -21,8 +21,8 @@ ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }} # issue 标签
 
 ### 使用示例
 
-[.github/workflows/IssueManagementAutomation.yml](.github/workflows/IssueManagementAutomation.yml)
-直接复制到你的仓库的 `.github/workflows` 目录下，随后配置两个 secrets 即可
+[.github/workflows/issue-auto-lock.yml](.github/workflows/issue-auto-lock.yml)
+直接复制到你的仓库的 `.github/workflows` 目录下即可
 
 ## 手动执行(只执行一次)
 
@@ -31,7 +31,7 @@ ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }} # issue 标签
 1. 克隆此仓库到本地：
 
    ```sh
-   git clone https://github.com/14790897/auto-lock-baipiao
+   git clone https://github.com/devhaozi/issue-auto-lock
    ```
 
 2. 进入项目目录：
@@ -54,8 +54,8 @@ ISSUE_LABELS: ${{ secrets.ISSUE_LABELS }} # issue 标签
    GH_REPO=your_username/your_repo
    GH_TOKEN=your_github_access_token
    ISSUE_LABELS="haven't given me a star"
-   ISSUE_CLOSE_COMMENT="please give me a star, then I will consider it."
-   ISSUE_REOPEN_COMMENT="thank you for giving me a star, I will consider it."
+   ISSUE_CLOSE_COMMENT="Thank you for opening this issue. I noticed that you haven not given me a star yet, so I will close this issue. Please give me a star first and wait for it to be unlocked. Thank you for your understanding."
+   ISSUE_REOPEN_COMMENT="Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support.
    ```
 
    - `GH_REPO`: 设置为你的 GitHub 用户名和仓库名。

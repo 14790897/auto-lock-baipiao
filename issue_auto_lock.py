@@ -7,8 +7,12 @@ import requests
 
 issue_labels = os.getenv("ISSUE_LABELS", "haven't given me a star")
 issue_labels = issue_labels.split(",")  # 将字符串转换为列表
-issue_close_comment = os.getenv("ISSUE_CLOSE_COMMENT", "please give me a star, then I will consider it.")
-issue_reopen_comment = os.getenv("ISSUE_REOPEN_COMMENT", "thank you for giving me a star, I will consider it.")
+issue_close_comment = os.getenv("ISSUE_CLOSE_COMMENT",
+                                "Thank you for opening this issue. I noticed that you haven not given me a star yet, so I will close this issue. Please give me a star first and wait for it to be unlocked. Thank you for your understanding.")
+issue_reopen_comment = os.getenv("ISSUE_REOPEN_COMMENT",
+                                 "Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support.)
+white_list = os.getenv("WIHTE_LIST", "")
+white_list = white_list.split(",")  # 将字符串转换为列表
 github_repo = os.getenv("GH_REPO")
 github_token = os.getenv("GH_TOKEN")
 
@@ -140,11 +144,14 @@ if '__main__' == __name__:
 
     issues = get_issues(github_repo)
     for issue in issues:
+        # 跳过pr
         if 'pull_request' in issue:
             continue
-
         # 跳过机器人
         if issue['user']['type'] == 'Bot':
+            continue
+        # 跳过白名单
+        if issue['user']['login'] in white_list:
             continue
 
         login = issue['user']['login']
