@@ -18,7 +18,7 @@ inputs:
   issue_reopen_comment:
     description: "Comment to post when reopening the issue"
     required: false
-    default: "Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support.
+    default: "Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support."
   white_list:
     description: "Comma-separated list of users who can open issues without giving a star"
     required: false
