@@ -88,6 +88,7 @@ def close_issue(repo, issue_number):
 
     print('issue: {} closed'.format(issue_number))
 
+
 def leave_comment(repo, issue_number, body):
     url = 'https://api.github.com/repos/{}/issues/{}/comments'.format(repo, issue_number)
     data = {
@@ -98,6 +99,8 @@ def leave_comment(repo, issue_number, body):
         raise Exception('Error leave comment: ' + resp.text)
 
     print('issue: {} leave comment'.format(issue_number))
+
+
 def lock_issue(repo, issue_number):
     url = 'https://api.github.com/repos/{}/issues/{}/lock'.format(repo, issue_number)
     data = {
@@ -138,6 +141,10 @@ if '__main__' == __name__:
     issues = get_issues(github_repo)
     for issue in issues:
         if 'pull_request' in issue:
+            continue
+
+        # 跳过机器人
+        if issue['user']['type'] == 'Bot':
             continue
 
         login = issue['user']['login']
