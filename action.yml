@@ -1,4 +1,4 @@
-name: "issue-auto-lock"
+name: "auto-lock-baipiao"
 description: "Automatically manage issues based on stargazer status."
 inputs:
   gh_token:
