@@ -1,4 +1,4 @@
-name: Issue Auto Lock
+name: Auto Lock Baipiao
 on:
   schedule:
     - cron: "0 */6 * * *"
