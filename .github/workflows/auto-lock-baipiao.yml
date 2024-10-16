@@ -7,7 +7,7 @@ on:
     branches:
       - main
   issues:
-    types: [ opened ]
+    types: [opened]
 permissions:
   issues: write
   contents: read
@@ -23,3 +23,6 @@ jobs:
           gh_repo: ${{ env.GH_REPO }}
           gh_token: ${{ secrets.GITHUB_TOKEN }}
           issue_labels: "haven't given me a star ⭐"
+          issue_close_comment: "Thank you for opening this issue. I noticed that you haven not given me a star yet, so I will close this issue. Please give me a star first and wait for it to be unlocked. Thank you for your understanding."
+          issue_reopen_comment: "Thank you for giving me a star. I have unlocked this issue. If you have any questions, please feel free to ask. Thank you for your support."
+          white_list: "1"
