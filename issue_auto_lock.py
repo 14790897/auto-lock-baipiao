@@ -1,9 +1,9 @@
 from dotenv import load_dotenv
 import os
+import requests
 
 # 加载 .env 文件
 load_dotenv()
-import requests
 
 issue_labels = os.getenv("ISSUE_LABELS", "haven't given me a star")
 issue_labels = issue_labels.split(",")  # 将字符串转换为列表
