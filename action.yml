@@ -44,7 +44,7 @@ runs:
         pip install -r requirements.txt
       shell: bash
     - name: Run script
-      run: python issue_auto_lock.py
+      run: python issues_baipiao_checker.py
       env:
         GH_REPO: ${{ inputs.gh_repo }}
         GH_TOKEN: ${{ inputs.gh_token }}
