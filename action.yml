@@ -9,7 +9,7 @@ inputs:
     required: true
   issue_labels:
     description: "Comma-separated list of labels to apply to the issue"
-    required: true
+    required: false
     default: "haven't given me a star"
   issue_close_comment:
     description: "Comment to post when closing the issue"
