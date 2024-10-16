@@ -29,7 +29,7 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        repository: "devhaozi/issue-auto-lock"
+        repository: "14790897/auto-lock-baipiao"
         token: ${{ inputs.gh_token }}
     - name: Set up Python
       uses: actions/setup-python@v5
